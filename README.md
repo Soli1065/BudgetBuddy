@@ -52,20 +52,9 @@
 - Set up an IDE (e.g., Android Studio or VS Code)
 
 ### Clone the Repository
-```bash
 git clone https://github.com/Soli1065/BudgetBuddy.git
 cd BudgetBuddy
 
-
-Run the App
-Install dependencies:
-bash
-Copy code
-flutter pub get
-Launch the app on a connected device or emulator:
-bash
-Copy code
-flutter run
 
 ## 📂 Folder Structure
 
