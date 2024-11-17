@@ -1,4 +1,3 @@
-
 🤑 BudgetBuddy
 BudgetBuddy is a user-friendly financial management app designed to help users take control of their finances. It enables seamless tracking of expenses, insightful analytics, and future financial planning tools—all packed into a sleek and intuitive interface.
 
@@ -24,13 +23,13 @@ Analytics: Detailed insights and budgeting suggestions.
 Savings Goals: Set and track financial milestones.
 Cloud Syncing: Secure backup and cross-device access.
 🛠 Tech Stack
-Frontend:
+Frontend
 Flutter - Cross-platform development.
 Riverpod - State management.
-Backend:
+Backend
 Local Storage: Hive or SQLite for offline-first data handling.
 Future Options: Firebase or a custom backend for syncing.
-Development Tools:
+Development Tools
 IDE: VS Code or Android Studio.
 Version Control: Git/GitHub for CI/CD.
 Packages Used:
