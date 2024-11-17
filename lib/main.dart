@@ -1,24 +1,30 @@
+import 'package:budget_buddy/src/core/ui/themes/themes.dart';
+import 'package:budget_buddy/src/features/base/base.dart';
 import 'package:budget_buddy/src/features/home/home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
+    final themeMode = ref.watch(themeProvider); // Watching the theme state
+    final themeData = ref.read(themeProvider.notifier).themeData;
+
     return MaterialApp(
       title: 'BudgetBuddy',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const HomeScreen(),
+      theme: themeData, // Light theme
+      darkTheme: themeData, // Dark theme
+      themeMode: themeMode == ThemeModeType.light ? ThemeMode.light : ThemeMode.dark,
+      home: const BaseScreen(),
     );
   }
 }
