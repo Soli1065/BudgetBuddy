@@ -57,7 +57,7 @@ cd BudgetBuddy
 
 
 ## 📂 Folder Structure
-
+'''
 BudgetBuddy/
 │
 ├── lib/
@@ -70,7 +70,7 @@ BudgetBuddy/
 ├── test/                  # Unit and widget tests
 │
 └── README.md              # Project documentation
-
+'''
 ## 🤝 Contribution
 **We welcome contributions to improve BudgetBuddy! Feel free to:**
 
