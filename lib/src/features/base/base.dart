@@ -1,15 +1,16 @@
+import 'package:budget_buddy/src/core/ui/drawer/drawer.dart';
 import 'package:budget_buddy/src/features/home/home.dart';
 import 'package:budget_buddy/src/features/settings/settings.dart';
 import 'package:flutter/material.dart';
 
-class BaseScreen extends StatefulWidget {
-  const BaseScreen({super.key});
+class BasePage extends StatefulWidget {
+  const BasePage({super.key});
 
   @override
-  State<BaseScreen> createState() => _BaseScreenState();
+  State<BasePage> createState() => _BasePageState();
 }
 
-class _BaseScreenState extends State<BaseScreen> {
+class _BasePageState extends State<BasePage> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
@@ -32,6 +33,7 @@ class _BaseScreenState extends State<BaseScreen> {
       appBar: AppBar(
         title: const Text('BudgetBuddy'),
       ),
+      drawer: const CustomDrawer(),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),

@@ -1,6 +1,6 @@
-import 'package:budget_buddy/src/core/ui/themes/themes.dart';
-import 'package:budget_buddy/src/features/base/base.dart';
-import 'package:budget_buddy/src/features/home/home.dart';
+import 'package:budget_buddy/src/core/themes/themes.dart';
+import 'package:budget_buddy/src/routes/app_routes.dart';
+import 'package:budget_buddy/src/routes/route_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -24,7 +24,9 @@ class MyApp extends ConsumerWidget {
       theme: themeData, // Light theme
       darkTheme: themeData, // Dark theme
       themeMode: themeMode == ThemeModeType.light ? ThemeMode.light : ThemeMode.dark,
-      home: const BaseScreen(),
+      // home: const BasePage(),
+      initialRoute: AppRoutes.splash,
+      onGenerateRoute: generateRoutes(),
     );
   }
 }
