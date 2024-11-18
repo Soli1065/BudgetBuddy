@@ -1,24 +1,42 @@
-
-
-import 'package:budget_buddy/src/features/home/presentation/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomePage extends ConsumerWidget{
-  const HomePage({super.key});
+import '../home.dart';
+
+class HomePage extends ConsumerStatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<HomePage> createState() => _HomePageState();
+}
 
+class _HomePageState extends ConsumerState<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    // Trigger the data fetch on page load
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(homeProvider.notifier).loadData();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final homeState = ref.watch(homeProvider);
 
-    if (homeState.isLoading){
-      return const Center(child: CircularProgressIndicator(),);
-    }
-    else{
-      return Center(child: Text(homeState.data ?? 'No Data'),);
-    }
-
-
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home Page'),
+      ),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          // Trigger the refresh logic
+          ref.read(homeProvider.notifier).refreshData();
+        },
+        child: homeState.isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : Center(child: Text(homeState.data ?? 'No Data'))
+      ),
+    );
   }
 }
