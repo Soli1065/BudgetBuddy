@@ -3,6 +3,8 @@ import 'package:budget_buddy/src/features/home/home.dart';
 import 'package:budget_buddy/src/features/settings/settings.dart';
 import 'package:flutter/material.dart';
 
+import '../expense/presentation/pages/expense_list_page.dart';
+
 class BasePage extends StatefulWidget {
   const BasePage({super.key});
 
@@ -13,9 +15,9 @@ class BasePage extends StatefulWidget {
 class _BasePageState extends State<BasePage> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _widgetOptions = <Widget>[
+  static final List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    Text('Transactions'),
+    ExpenseListPage(),
     Text('Budget'),
     Text('Reports'),
     SettingsPage(),
@@ -45,7 +47,7 @@ class _BasePageState extends State<BasePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.attach_money),
-            label: 'Transactions',
+            label: 'Expense',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_balance_wallet),
