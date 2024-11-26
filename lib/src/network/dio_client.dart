@@ -1,5 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dio_interceptors.dart';
+
+
+final dioClientProvider = Provider<DioClient>((ref){
+  return DioClient();
+});
 
 /// This class provides a configured Dio instance
 /// with reusable methods for HTTP requests (GET, POST, etc.).

@@ -24,4 +24,19 @@ class ApiResult<T> {
 
   /// Checks if the result is a failure.
   bool get isFailure => error != null;
+
+
+
+  /// `when` method to handle success and failure cases
+  R when<R>({
+    required R Function(T data) success,
+    required R Function(NetworkExceptions error) failure,
+  }) {
+    if (data != null) {
+      return success(data!);
+    } else if (error != null) {
+      return failure(error!);
+    }
+    throw Exception('ApiResult is in an invalid state.');
+  }
 }

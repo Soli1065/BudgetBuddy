@@ -22,4 +22,19 @@ class DashboardNotifier extends StateNotifier<AsyncValue<DashboardDataModel>> {
       state = AsyncError(error,s);
     }
   }
+
+
+
+  /// Fetches dashboard summary and updates the state.
+  Future<void> loadDashboardSummary() async {
+    state = const AsyncValue.loading();
+    final result = await _repository.getDashboardSummary();
+
+    // result.when(
+    //   success: (data) => state = AsyncValue.data(data),
+    //   failure: (error) => state = AsyncValue.error(error),
+    // );
+  }
+
+
 }

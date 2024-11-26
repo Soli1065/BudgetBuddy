@@ -1,8 +1,15 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'dio_client.dart';
 import 'network_exceptions.dart';
 import 'api_result.dart';
+
+
+final networkHelperProvider = Provider<NetworkHelper>((ref){
+  final dioClient = ref.watch(dioClientProvider);
+  return NetworkHelper(dioClient: dioClient);
+});
 
 
 /// A helper class to manage HTTP requests via Dio.

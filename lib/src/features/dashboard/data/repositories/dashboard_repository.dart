@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../network/api_result.dart';
 import '../models/dashboard_data_model.dart';
 import '../services/dashboard_service.dart';
 
@@ -30,4 +31,16 @@ class DashboardRepository {
       ],
     );
   }
+
+
+  /// Retrieves dashboard summary data.
+  /// Converts the ApiResult into consumable data for higher layers.
+  Future<ApiResult<Map<String, dynamic>>> getDashboardSummary() async {
+    final result = await _service.getDashboardSummery();
+    return result.when(
+      success: (data) => ApiResult.success(data: data),
+      failure: (error) => ApiResult.failure(error: error),
+    );
+  }
+
 }
