@@ -1,4 +1,5 @@
 import 'package:budget_buddy/src/core/ui/drawer/drawer.dart';
+import 'package:budget_buddy/src/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:budget_buddy/src/features/home/home.dart';
 import 'package:budget_buddy/src/features/settings/settings.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class _BasePageState extends State<BasePage> {
   int _selectedIndex = 0;
 
   static final List<Widget> _widgetOptions = <Widget>[
-    HomePage(),
+    DashboardPage(),
     ExpenseListPage(),
     Text('Budget'),
     Text('Reports'),
