@@ -1,6 +1,5 @@
 import 'package:budget_buddy/src/core/ui/drawer/drawer.dart';
 import 'package:budget_buddy/src/features/dashboard/presentation/pages/dashboard_page.dart';
-import 'package:budget_buddy/src/features/home/home.dart';
 import 'package:budget_buddy/src/features/settings/settings.dart';
 import 'package:flutter/material.dart';
 
@@ -44,7 +43,7 @@ class _BasePageState extends State<BasePage> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'Dashboard',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.attach_money),
@@ -64,7 +63,10 @@ class _BasePageState extends State<BasePage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue, // Customize the color
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        enableFeedback: true,
+        type: BottomNavigationBarType.fixed,
         onTap: _onItemTapped,
       ),
     );

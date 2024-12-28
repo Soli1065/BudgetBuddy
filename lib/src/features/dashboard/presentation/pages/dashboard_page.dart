@@ -12,9 +12,9 @@ class DashboardPage extends ConsumerWidget {
     final dashboardState = ref.watch(dashboardProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Dashboard'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Dashboard'),
+      // ),
       body: dashboardState.when(
         data: (data) => _buildDashboardContent(data),
         loading: () => const Center(child: CircularProgressIndicator()),
