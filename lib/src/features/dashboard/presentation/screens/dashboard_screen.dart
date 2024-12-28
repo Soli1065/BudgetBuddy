@@ -4,22 +4,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../data/models/dashboard_data_model.dart';
 import '../../data/providers/dashboard_provider.dart';
 
-class DashboardPage extends ConsumerWidget {
-  const DashboardPage({Key? key}) : super(key: key);
+class DashboardScreen extends ConsumerWidget {
+  const DashboardScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final dashboardState = ref.watch(dashboardProvider);
 
-    return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('Dashboard'),
-      // ),
-      body: dashboardState.when(
-        data: (data) => _buildDashboardContent(data),
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, _) => Center(child: Text('Error: $error')),
-      ),
+    return dashboardState.when(
+      data: (data) => _buildDashboardContent(data),
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (error, _) => Center(child: Text('Error: $error')),
     );
   }
 

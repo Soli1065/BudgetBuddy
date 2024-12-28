@@ -1,9 +1,11 @@
 import 'package:budget_buddy/src/core/ui/drawer/drawer.dart';
-import 'package:budget_buddy/src/features/dashboard/presentation/pages/dashboard_page.dart';
+import 'package:budget_buddy/src/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:budget_buddy/src/features/settings/settings.dart';
 import 'package:flutter/material.dart';
 
 import '../expense/presentation/pages/expense_list_page.dart';
+
+enum Tab {dashboard, expense, budget, reports, settings}
 
 class BasePage extends StatefulWidget {
   const BasePage({super.key});
@@ -16,7 +18,7 @@ class _BasePageState extends State<BasePage> {
   int _selectedIndex = 0;
 
   static final List<Widget> _widgetOptions = <Widget>[
-    DashboardPage(),
+    const DashboardScreen(),
     ExpenseListPage(),
     Text('Budget'),
     Text('Reports'),
@@ -29,11 +31,23 @@ class _BasePageState extends State<BasePage> {
     });
   }
 
+  String _getTabTitle(int index){
+    String title = 'title';
+    switch(index){
+      case 0: title = 'Dashboard';
+      case 1: title = 'Expense';
+      case 2: title = 'Budget';
+      case 3: title = 'Reports';
+      case 4: title = 'Settings';
+    }
+    return title;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BudgetBuddy'),
+        title: Text(_getTabTitle(_selectedIndex)),
       ),
       drawer: const CustomDrawer(),
       body: Center(
