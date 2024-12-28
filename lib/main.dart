@@ -1,4 +1,4 @@
-import 'package:budget_buddy/src/core/themes/themes.dart';
+import 'package:budget_buddy/src/core/theme/theme.dart';
 import 'package:budget_buddy/src/routes/app_routes.dart';
 import 'package:budget_buddy/src/routes/route_handler.dart';
 import 'package:flutter/material.dart';

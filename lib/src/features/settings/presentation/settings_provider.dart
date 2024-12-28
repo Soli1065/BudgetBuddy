@@ -1,6 +1,6 @@
 
 
-import 'package:budget_buddy/src/core/themes/themes.dart';
+import 'package:budget_buddy/src/core/theme/theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'settings_state.dart';
 
