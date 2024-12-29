@@ -13,7 +13,6 @@ class ExpenseScreen extends ConsumerWidget {
     final expenses = ref.watch(expenseProvider);
 
     return Scaffold(
-      // No AppBar here because it's handled in base_screen
       body: Column(
         children: [
           // 1) Expanded Summary Section
@@ -24,7 +23,6 @@ class ExpenseScreen extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Example: total spent, date range, etc.
                 Text(
                   'Total Spent This Month: \$450.00',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -37,8 +35,6 @@ class ExpenseScreen extends ConsumerWidget {
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 const SizedBox(height: 4),
-                // Could be more financial info:
-                // e.g., 'Average Daily Expense', 'Highest Category', etc.
                 Text(
                   'Average Daily Expense: \$15.00',
                   style: Theme.of(context).textTheme.bodyMedium,
@@ -47,28 +43,22 @@ class ExpenseScreen extends ConsumerWidget {
             ),
           ),
 
-          // 2) Row for Filter & Search Buttons (below summary)
+          // 2) Search Field (in place of filter/search buttons)
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Row(
-              children: [
-                ElevatedButton.icon(
-                  icon: const Icon(Icons.filter_list),
-                  label: const Text('Filter'),
-                  onPressed: () {
-                    // TODO: Implement filter logic
-                  },
+            child: TextField(
+              decoration: InputDecoration(
+                contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                hintText: 'Search expenses...',
+                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
                 ),
-                const SizedBox(width: 8),
-                ElevatedButton.icon(
-                  icon: const Icon(Icons.search),
-                  label: const Text('Search'),
-                  onPressed: () {
-                    // TODO: Implement search logic
-                  },
-                ),
-                // Add more buttons or dropdowns if desired
-              ],
+              ),
+              onChanged: (value) {
+                // TODO: Implement actual search logic
+                // e.g., ref.read(expenseProvider.notifier).searchExpenses(value);
+              },
             ),
           ),
 
