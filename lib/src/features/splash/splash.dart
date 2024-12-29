@@ -1,4 +1,4 @@
-import 'package:budget_buddy/src/features/base/base.dart';
+import 'package:budget_buddy/src/features/base/base_screen.dart';
 // import 'package:budget_buddy/src/routes/route_handler.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // bool isLoggedIn = false; // Example check for user login
 
 
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=> const BasePage()), (Route<dynamic> route) => false );
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=> const BaseScreen()), (Route<dynamic> route) => false );
 
     // if (isFirstTime) {
     //   Navigator.pushReplacementNamed(context, AppRoutes.onboarding);

@@ -3,23 +3,23 @@ import 'package:budget_buddy/src/features/dashboard/presentation/screens/dashboa
 import 'package:budget_buddy/src/features/settings/settings.dart';
 import 'package:flutter/material.dart';
 
-import '../expense/presentation/pages/expense_list_page.dart';
+import '../expense/presentation/pages/expense_screen.dart';
 
 enum Tab {dashboard, expense, budget, reports, settings}
 
-class BasePage extends StatefulWidget {
-  const BasePage({super.key});
+class BaseScreen extends StatefulWidget {
+  const BaseScreen({super.key});
 
   @override
-  State<BasePage> createState() => _BasePageState();
+  State<BaseScreen> createState() => _BaseScreenState();
 }
 
-class _BasePageState extends State<BasePage> {
+class _BaseScreenState extends State<BaseScreen> {
   int _selectedIndex = 0;
 
   static final List<Widget> _widgetOptions = <Widget>[
     const DashboardScreen(),
-    ExpenseListPage(),
+    ExpenseScreen(),
     Text('Budget'),
     Text('Reports'),
     SettingsPage(),

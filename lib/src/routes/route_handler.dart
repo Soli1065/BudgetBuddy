@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../features/expense/data/models/expense.dart';
 import '../features/expense/presentation/pages/add_expense_page.dart';
 import '../features/expense/presentation/pages/expense_detail_page.dart';
-import '../features/expense/presentation/pages/expense_list_page.dart';
+import '../features/expense/presentation/pages/expense_screen.dart';
 import '../features/features.dart';
 import 'app_routes.dart';
 
@@ -13,7 +13,7 @@ RouteFactory generateRoutes() {
       case AppRoutes.splash:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case AppRoutes.base:
-        return MaterialPageRoute(builder: (_) => const BasePage());
+        return MaterialPageRoute(builder: (_) => const BaseScreen());
       // case AppRoutes.settings:
       //   return MaterialPageRoute(builder: (_) => const SettingsPage());
       // case AppRoutes.reports:
@@ -30,7 +30,7 @@ RouteFactory generateRoutes() {
 
 
 final Map<String, WidgetBuilder> expenseRoutes = {
-  '/expense/list': (context) => ExpenseListPage(),
+  '/expense/list': (context) => ExpenseScreen(),
   '/expense/add': (context) => AddExpensePage(),
   '/expense/detail': (context) {
     final expense = ModalRoute.of(context)!.settings.arguments as Expense;
