@@ -1,10 +1,13 @@
 import 'package:budget_buddy/src/core/theme/theme.dart';
 import 'package:budget_buddy/src/routes/app_routes.dart';
 import 'package:budget_buddy/src/routes/route_handler.dart';
+import 'package:budget_buddy/src/storage/hive_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void main() {
+void main() async{
+
+  await HiveService.initHive();
   runApp(const ProviderScope(child: MyApp()));
 }
 

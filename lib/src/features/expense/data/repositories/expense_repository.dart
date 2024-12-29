@@ -1,29 +1,30 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../models/expense.dart';
-import '../services/expense_services.dart';
 
-// Provider for repository
+import '../models/expense.dart';
+import '../services/hive_expense_service.dart';
+
 final expenseRepositoryProvider = Provider<ExpenseRepository>((ref) {
-  return ExpenseRepository(ref);
+  return ExpenseRepository(HiveExpenseService());
 });
 
 class ExpenseRepository {
-  final Ref ref;
+  final HiveExpenseService _service;
 
-  ExpenseRepository(this.ref);
+  ExpenseRepository(this._service);
 
-  // Fetch all expenses
   Future<List<Expense>> getAllExpenses() async {
-    return await ref.read(expenseServicesProvider).fetchExpenses();
+    return _service.getAll();
   }
 
-  // Add a new expense
   Future<void> addExpense(Expense expense) async {
-    await ref.read(expenseServicesProvider).saveExpense(expense);
+    await _service.add(expense);
   }
 
-  // Remove an expense
+  Future<void> updateExpense(Expense expense) async {
+    await _service.update(expense);
+  }
+
   Future<void> removeExpense(String id) async {
-    await ref.read(expenseServicesProvider).deleteExpense(id);
+    await _service.delete(id);
   }
 }
